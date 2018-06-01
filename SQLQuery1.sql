@@ -1,0 +1,2 @@
+﻿ALTER TABLE Pet
+ADD Dt_Adcocao DATETIME

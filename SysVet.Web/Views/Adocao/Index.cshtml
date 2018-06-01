@@ -1,0 +1,91 @@
+﻿@model SysVet.Web.Service.Adocao
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Adoção de pet</h2>
+<p>
+    @Html.ActionLink("Adotar", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Idade
+        </th>
+        <th>
+            Adotado
+        </th>
+        <th>
+            Pessoa
+        </th>
+        <th>
+            Data adocao
+        </th>
+    </tr>
+
+    
+
+    @foreach (var item in ViewBag.PetList.Items)
+    {
+        if (item.Flg_Adotado != null && item.Flg_Adotado != 0)
+        {
+        <tr>
+            <td>
+                @item.Nome
+            </td>
+            <td>
+                @item.Tipo
+            </td>
+            <td>
+                @item.Idade
+            </td>
+            <td>
+                @item.Flg_Adotado
+            </td>
+            @foreach (var x in ViewBag.PessoaList.Items)
+            {
+                if (x.Id == item.Id_Pessoa)
+                {
+                    <td>
+                        @x.Nome
+                    </td>
+                }
+            }
+            <td>
+               @item.Dt_Adocao
+            </td>
+        </tr>
+        }
+    }
+
+</table>
+@*<div class="form-group">
+        @Html.LabelFor(model => model.Pet.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            @Html.DropDownListFor(model => model.Pet.Id, (SelectList)ViewBag.Pet)
+            @Html.ValidationMessageFor(model => model.Pet.Nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pessoa.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            @Html.DropDownListFor(model => model.Pessoa.Id, (SelectList)ViewBag.Pessoa)
+            @Html.ValidationMessageFor(model => model.Pessoa.Nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>*@
+

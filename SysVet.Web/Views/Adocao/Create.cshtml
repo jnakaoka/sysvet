@@ -1,0 +1,33 @@
+﻿@model SysVet.Web.Service.Adocao
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<h2>Adotar de pet</h2>
+
+@using (Html.BeginForm("Adotar", "Adocao", FormMethod.Post))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pet.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            @Html.DropDownListFor(model => model.Pet.Id, (SelectList)ViewBag.Pet)
+            @Html.ValidationMessageFor(model => model.Pet.Nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pessoa.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            @Html.DropDownListFor(model => model.Pessoa.Id, (SelectList)ViewBag.Pessoa)
+            @Html.ValidationMessageFor(model => model.Pessoa.Nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Adotar" class="btn btn-default" />
+        </div>
+    </div>
+}
